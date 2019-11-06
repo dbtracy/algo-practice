@@ -20,7 +20,7 @@ function wordsInString(wordList, word) {
     for (let i = 1; i < word.length; i++) {
       let wordSegment = word.slice(0, i)
       if (wordList.includes(wordSegment)) {
-        queue.push([word.slice(i), collected.concat([wordSegment])])
+        queue.push([word.slice(i), [...collected, wordSegment]])
       }
       console.log('WORD:', word)
       console.log('COLLECTED:', collected)

@@ -11,15 +11,11 @@ function wordsInString(wordList, word) {
   let answers = []
 
   while (queue.length) {
-    // console.log('QUEUE:', queue)
     let [word, collected] = queue.pop()
-    // console.log('WORD:', word)
-    // console.log('COLLECTED:', collected)
     if (wordList.includes(word)) {
       collected.push(word)
       answers.push(collected)
     }
-    // console.log('WORD:', word)
     console.log('QUEUE:', queue)
     for (let i = 1; i < word.length; i++) {
       let wordSegment = word.slice(0, i)

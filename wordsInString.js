@@ -22,6 +22,7 @@ function wordsInString(wordList, word) {
       if (wordList.includes(wordSegment)) {
         queue.push([word.slice(i), [...collected, wordSegment]])
       }
+      console.log('QUEUE IN LOOP:', queue)
       console.log('WORD:', word)
       console.log('COLLECTED:', collected)
     }
@@ -31,15 +32,20 @@ function wordsInString(wordList, word) {
   return answers
 }
 
-console.log(wordsInString(['dog', 'cats', 'sand', 'cat', 'and', 'catsan', 'ddog'], "catsanddog"))
+console.log(wordsInString(['dog', 'cats', 'sand', 'cat', 'and'], "catsanddog"))
 
 /**
  * APPROACH:
  *
- * 1. Create 'result' variable (array)
- * 2. Create 'wordListHash' variable (object)
- * 3. Loop through wordList, adding words to wordListHash
- * 4. Loop through string
- *   - once a full word in hash is found,
- *
+ * 1. Create a 'queue'
+ *  - each element in the 'queue' is a 2-el array
+ *    - arr[0] is rest of string to work with, arr[1] is array of known word(s)
+ * 2. Create 'answers' array
+ * 3. While 'queue' has stuff in it
+ *  - pop the 'queue' and set 'word' to pop[0], 'collected' (array) to pop[1]
+ *  - if word is in wordlist, push it into 'collected'
+ *  - push collected into answers
+ *  - loop through 'word', starting at i = 1
+ *    - if word.slice(i) is in wordlist, push [restofstring, [...collected, wordslice]] into 'queue'
+ * 4. Return answers
  */
